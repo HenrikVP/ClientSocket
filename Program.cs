@@ -1,12 +1,9 @@
-﻿// A C# program for Client
-using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
 namespace Client
 {
-
     public class Program
     {
 
@@ -17,16 +14,15 @@ namespace Client
             Console.WriteLine("In Main: Creating the Child thread");
             Thread childThread = new Thread(childref);
             childThread.Start();
-            //Console.ReadKey();
-            //Server.Program.ExecuteServer();
-            Thread.Sleep(50);
+            
+            //We let main thread(client) sleep a bit so server can start up
+            Thread.Sleep(1000);
             ExecuteClient();
         }
 
         // ExecuteClient() Method
         static void ExecuteClient()
         {
-
             try
             {
 
