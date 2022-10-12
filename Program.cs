@@ -27,8 +27,12 @@ namespace Client
                 // for the socket. This example
                 // uses port 11111 on the local
                 // computer.
-                Console.Write("Input server IP: ");
+                Console.Write("Input server IP (default 192.168.1.2): ");                
                 string ip = Console.ReadLine();
+                if (ip == "") ip = "192.168.1.2";
+
+                Console.Write("Message: ");
+                string input = Console.ReadLine();
                 //IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
                 IPAddress ipAddr = IPAddress.Parse(ip);
                 IPEndPoint localEndPoint = new IPEndPoint(ipAddr, 11111);
@@ -52,7 +56,7 @@ namespace Client
 
                     // Creation of message that
                     // we will send to Server
-                    byte[] messageSent = Encoding.ASCII.GetBytes("Test Client<EOF>");
+                    byte[] messageSent = Encoding.ASCII.GetBytes(input+"<EOF>");
                     int byteSent = sender.Send(messageSent);
 
                     // Data buffer
