@@ -7,12 +7,19 @@ using System.Text;
 namespace Client
 {
 
-    class Program
+    public class Program
     {
 
         // Main Method
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            ThreadStart childref = new ThreadStart(Server.Program.ExecuteServer);
+            Console.WriteLine("In Main: Creating the Child thread");
+            Thread childThread = new Thread(childref);
+            childThread.Start();
+            //Console.ReadKey();
+            //Server.Program.ExecuteServer();
+            Thread.Sleep(50);
             ExecuteClient();
         }
 
