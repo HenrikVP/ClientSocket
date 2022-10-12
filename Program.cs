@@ -30,10 +30,11 @@ namespace Client
                 // for the socket. This example
                 // uses port 11111 on the local
                 // computer.
+                Console.CursorLeft = 0;
                 Console.Write("Input server IP (default 192.168.1.2): ");                
                 string ip = Console.ReadLine();
                 if (ip == "") ip = "192.168.1.2";
-
+                Console.CursorLeft = 0;
                 Console.Write("Message: ");
                 string input = Console.ReadLine();
                 //IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
@@ -54,6 +55,7 @@ namespace Client
 
                     // We print EndPoint information
                     // that we are connected
+                    Console.CursorLeft = 0;
                     Console.WriteLine("Socket connected to -> {0} ",
                                 sender.RemoteEndPoint.ToString());
 
@@ -71,6 +73,7 @@ namespace Client
                     // received, that we'll use to
                     // convert them to string
                     int byteRecv = sender.Receive(messageReceived);
+                    Console.CursorLeft = 0;
                     Console.WriteLine("Message from Server -> {0}",
                         Encoding.ASCII.GetString(messageReceived,
                                                     0, byteRecv));
